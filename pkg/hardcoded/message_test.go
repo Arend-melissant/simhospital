@@ -325,7 +325,7 @@ func testPerson() *ir.Person {
 			City:       "London",
 			PostalCode: "SL9 8RA",
 			Country:    "GBR",
-			Type:       "HOME",
+			Type:       "home",
 		},
 		Gender: "1",
 	}

@@ -27,7 +27,7 @@ func TestRandom(t *testing.T) {
 	rand.Seed(1)
 
 	cities := []string{"London", "Cambridge"}
-	types := []string{"HOME"}
+	types := []string{"home"}
 	streets := []string{"Road", "Street"}
 	country := "GBR"
 	nouns := []string{"aardvark", "abacus", "abbey"}

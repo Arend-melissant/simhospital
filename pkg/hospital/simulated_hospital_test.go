@@ -65,10 +65,10 @@ const (
 	hardcodedMessageYml = `DischargeHardcodedMessage:
   segments:
     - "MSH|^~\\&|sending_application_reliable|sending_facility|receiving_application|receiving_facility|%s||ADT^A03|%s|T|2.3|||AL||44|ASCII"
-    - "EVN|A03|20180212000000|||id-1^surname-1^firstname-1^^^prefix-1^^^DRNBR^PRSNL^^^ORGDR|"
+    - "EVN|A03|20180212000000|||id-1^surname-1^firstname-1^^^prefix-1^^^DRNBR^official^^^ORGDR|"
     - "PID_SEGMENT_PLACEHOLDER"
     - "PD1|||Test Primary Facility^^123|"
-    - "PV1|1|PREADMIT||28b|||id-1^surname-1^firstname-1^^^prefix-1^^^DRNBR^PRSNL^^^ORGDR|||specialty-1||||||||PREADMIT|3448412528941593955^^^^visitid||||||||||||||||||||||FINISHED|||20180212000000|20180212000000|"`
+    - "PV1|1|PREADMIT||28b|||id-1^surname-1^firstname-1^^^prefix-1^^^DRNBR^official^^^ORGDR|||specialty-1||||||||PREADMIT|3448412528941593955^^^^visitid||||||||||||||||||||||FINISHED|||20180212000000|20180212000000|"`
 )
 
 func TestMain(m *testing.M) {

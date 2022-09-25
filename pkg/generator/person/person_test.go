@@ -56,7 +56,7 @@ var (
 		City:       "London",
 		PostalCode: "AB1 2CD",
 		Country:    "GB",
-		Type:       "HOME",
+		Type:       "home",
 	}
 	defaultMalePerson = &ir.Person{
 		Prefix:     malePrefix,
@@ -95,7 +95,7 @@ func TestNewPerson(t *testing.T) {
 					City:       "Croydon",
 					Postcode:   "XY9 8ZZ",
 					Country:    "UK",
-					Type:       "HOME",
+					Type:       "home",
 				},
 			},
 			want: &ir.Person{
@@ -113,7 +113,7 @@ func TestNewPerson(t *testing.T) {
 					City:       "Croydon",
 					PostalCode: "XY9 8ZZ",
 					Country:    "UK",
-					Type:       "HOME",
+					Type:       "home",
 				},
 				MRN: "123456",
 			},

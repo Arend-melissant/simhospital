@@ -61,7 +61,7 @@ func (g *Generator) Random() *ir.Address {
 		City:       g.city(),
 		PostalCode: g.PostcodeGenerator.Random(),
 		Country:    g.Address.Country,
-		Type:       "HOME",
+		Type:       "home",
 	}
 
 	if rand.Intn(2) == 0 {

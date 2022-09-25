@@ -65,4 +65,4 @@ address:
     - "Street"
   country: "GBR"
   types:
-    - "HOME"
+    - "home"

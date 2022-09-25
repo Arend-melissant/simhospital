@@ -1,0 +1,531 @@
+{
+    "resourceType": "Bundle",
+    "id": "d276373a-a995-48bd-9047-52e76cebd57a",
+    "meta": {
+        "lastUpdated": "2022-09-16T14:20:50.5906668+00:00"
+    },
+    "type": "searchset",
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://localhost:44348/Encounter?subject=Patient%2Fd3eb1d4c-bf9c-0df9-c372-b5e81a44f7db"
+        }
+    ],
+    "entry": [
+        {
+            "fullUrl": "https://localhost:44348/Encounter/8ba8c1b7-c5b9-118b-74a6-12ff5ee020d3",
+            "resource": {
+                "resourceType": "Encounter",
+                "id": "8ba8c1b7-c5b9-118b-74a6-12ff5ee020d3",
+                "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2022-09-16T14:14:58.011+00:00"
+                },
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><span>Visit Description: </span></p></div>"
+                },
+                "status": "in-progress",
+                "class": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "code": "AMB",
+                    "display": "ambulatory"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "28b",
+                                "display": "28b"
+                            }
+                        ]
+                    }
+                ],
+                "serviceType": {
+                    "coding": [
+                        {
+                            "code": "CAR"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/d3eb1d4c-bf9c-0df9-c372-b5e81a44f7db"
+                },
+                "participant": [
+                    {
+                        "type": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                                        "code": "ATND",
+                                        "display": "attender"
+                                    }
+                                ]
+                            }
+                        ],
+                        "individual": {
+                            "reference": "Practitioner/07cb183d-bae8-cbc9-56cc-764ecfa02850"
+                        }
+                    }
+                ],
+                "period": {
+                    "start": "2021-09-15T15:14:52+02:00"
+                },
+                "location": [
+                    {
+                        "location": {
+                            "reference": "Location/49568722-328b-86f3-5145-8a77a2011907" /*ED--Simulated Hospital--ED*/
+                        },
+                        "status": "active"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "fullUrl": "https://localhost:44348/Encounter/dbc49d3b-5d2d-d857-f9a2-30be85bf39f8",
+            "resource": {
+                "resourceType": "Encounter",
+                "id": "dbc49d3b-5d2d-d857-f9a2-30be85bf39f8",
+                "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2022-09-16T14:15:02.014+00:00"
+                },
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><span>Visit Description: </span></p></div>"
+                },
+                "identifier": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                    "code": "VN"
+                                }
+                            ],
+                            "text": "visit number"
+                        },
+                        "value": "11747834506878020155"
+                    }
+                ],
+                "status": "in-progress",
+                "class": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "code": "IMP",
+                    "display": "inpatient encounter"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "28b",
+                                "display": "28b"
+                            }
+                        ]
+                    }
+                ],
+                "serviceType": {
+                    "coding": [
+                        {
+                            "code": "CAR"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/d3eb1d4c-bf9c-0df9-c372-b5e81a44f7db"
+                },
+                "participant": [
+                    {
+                        "type": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                                        "code": "ATND",
+                                        "display": "attender"
+                                    }
+                                ]
+                            }
+                        ],
+                        "individual": {
+                            "reference": "Practitioner/07cb183d-bae8-cbc9-56cc-764ecfa02850"
+                        }
+                    }
+                ],
+                "period": {
+                    "start": "2022-09-16T14:14:52+02:00"
+                },
+                "location": [
+                    {
+                        "location": {
+                            "reference": "Location/2640d3f6-41d0-1487-f7dc-26732aa88162" /*RenalWard--OtherRoom--Bed 1--Simulated Hospital--BED--Main Building--5*/
+                        },
+                        "status": "active"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "fullUrl": "https://localhost:44348/Encounter/448a482a-c163-6236-12ff-6a1875cea58e",
+            "resource": {
+                "resourceType": "Encounter",
+                "id": "448a482a-c163-6236-12ff-6a1875cea58e",
+                "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2022-09-16T14:16:07.564+00:00"
+                },
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><span>Visit Description: </span></p></div>"
+                },
+                "identifier": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                    "code": "VN"
+                                }
+                            ],
+                            "text": "visit number"
+                        },
+                        "value": "11747834506878020155"
+                    }
+                ],
+                "status": "in-progress",
+                "class": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "code": "IMP",
+                    "display": "inpatient encounter"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "28b",
+                                "display": "28b"
+                            }
+                        ]
+                    }
+                ],
+                "serviceType": {
+                    "coding": [
+                        {
+                            "code": "CAR"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/d3eb1d4c-bf9c-0df9-c372-b5e81a44f7db"
+                },
+                "participant": [
+                    {
+                        "type": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                                        "code": "ATND",
+                                        "display": "attender"
+                                    }
+                                ]
+                            }
+                        ],
+                        "individual": {
+                            "reference": "Practitioner/07cb183d-bae8-cbc9-56cc-764ecfa02850"
+                        }
+                    }
+                ],
+                "period": {
+                    "start": "2022-09-16T14:14:52+02:00"
+                },
+                "location": [
+                    {
+                        "location": {
+                            "reference": "Location/459a0771-847b-7078-18c4-5f91f4ee7732" /*OtherWard--MainRoom--Bed 2--Simulated Hospital--BED--Main Building--4*/
+                        },
+                        "status": "active"
+                    },
+                    {
+                        "location": {
+                            "reference": "Location/2640d3f6-41d0-1487-f7dc-26732aa88162" /*RenalWard--OtherRoom--Bed 1--Simulated Hospital--BED--Main Building--5*/
+                        },
+                        "status": "completed"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "fullUrl": "https://localhost:44348/Encounter/703fbb23-c465-8313-e9df-083e76d48859",
+            "resource": {
+                "resourceType": "Encounter",
+                "id": "703fbb23-c465-8313-e9df-083e76d48859",
+                "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2022-09-16T14:17:46.107+00:00"
+                },
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><span>Visit Description: </span></p></div>"
+                },
+                "identifier": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                    "code": "VN"
+                                }
+                            ],
+                            "text": "visit number"
+                        },
+                        "value": "11747834506878020155"
+                    }
+                ],
+                "status": "in-progress",
+                "class": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "code": "IMP",
+                    "display": "inpatient encounter"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "28b",
+                                "display": "28b"
+                            }
+                        ]
+                    }
+                ],
+                "serviceType": {
+                    "coding": [
+                        {
+                            "code": "CAR"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/d3eb1d4c-bf9c-0df9-c372-b5e81a44f7db"
+                },
+                "participant": [
+                    {
+                        "type": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                                        "code": "ATND",
+                                        "display": "attender"
+                                    }
+                                ]
+                            }
+                        ],
+                        "individual": {
+                            "reference": "Practitioner/07cb183d-bae8-cbc9-56cc-764ecfa02850"
+                        }
+                    }
+                ],
+                "period": {
+                    "start": "2022-09-16T14:14:52+02:00"
+                },
+                "location": [
+                    {
+                        "location": {
+                            "reference": "Location/459a0771-847b-7078-18c4-5f91f4ee7732" /*OtherWard--MainRoom--Bed 2--Simulated Hospital--BED--Main Building--4*/
+                        },
+                        "status": "completed"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "fullUrl": "https://localhost:44348/Encounter/6e74e239-7cdb-9f44-2856-fa75bde4f76c",
+            "resource": {
+                "resourceType": "Encounter",
+                "id": "6e74e239-7cdb-9f44-2856-fa75bde4f76c",
+                "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2022-09-16T14:19:09.927+00:00"
+                },
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><span>Visit Description: </span></p></div>"
+                },
+                "identifier": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                    "code": "VN"
+                                }
+                            ],
+                            "text": "visit number"
+                        },
+                        "value": "11747834506878020155"
+                    }
+                ],
+                "status": "in-progress",
+                "class": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "code": "IMP",
+                    "display": "inpatient encounter"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "28b",
+                                "display": "28b"
+                            }
+                        ]
+                    }
+                ],
+                "serviceType": {
+                    "coding": [
+                        {
+                            "code": "CAR"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/d3eb1d4c-bf9c-0df9-c372-b5e81a44f7db"
+                },
+                "participant": [
+                    {
+                        "type": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                                        "code": "ATND",
+                                        "display": "attender"
+                                    }
+                                ]
+                            }
+                        ],
+                        "individual": {
+                            "reference": "Practitioner/07cb183d-bae8-cbc9-56cc-764ecfa02850"
+                        }
+                    }
+                ],
+                "period": {
+                    "start": "2022-09-16T14:14:52+02:00"
+                },
+                "location": [
+                    {
+                        "location": {
+                            "reference": "Location/c8143466-d8e8-cee7-052e-13ddee339f2b" /*RenalWard--MainRoom--Bed 1--Simulated Hospital--BED--Main Building--5*/
+                        },
+                        "status": "active"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "fullUrl": "https://localhost:44348/Encounter/82058567-2522-1f32-b9bd-b71fd09b9274",
+            "resource": {
+                "resourceType": "Encounter",
+                "id": "82058567-2522-1f32-b9bd-b71fd09b9274",
+                "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2022-09-16T14:20:11.806+00:00"
+                },
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><span>Visit Description: </span></p></div>"
+                },
+                "identifier": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                    "code": "VN"
+                                }
+                            ],
+                            "text": "visit number"
+                        },
+                        "value": "11747834506878020155"
+                    }
+                ],
+                "status": "in-progress",
+                "class": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "code": "IMP",
+                    "display": "inpatient encounter"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "28b",
+                                "display": "28b"
+                            }
+                        ]
+                    }
+                ],
+                "serviceType": {
+                    "coding": [
+                        {
+                            "code": "CAR"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/d3eb1d4c-bf9c-0df9-c372-b5e81a44f7db"
+                },
+                "participant": [
+                    {
+                        "type": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                                        "code": "ATND",
+                                        "display": "attender"
+                                    }
+                                ]
+                            }
+                        ],
+                        "individual": {
+                            "reference": "Practitioner/07cb183d-bae8-cbc9-56cc-764ecfa02850"
+                        }
+                    }
+                ],
+                "period": {
+                    "start": "2022-09-16T14:14:52+02:00",
+                    "end": "2022-09-16T14:20:09+02:00"
+                },
+                "location": [
+                    {
+                        "location": {
+                            "reference": "Location/c8143466-d8e8-cee7-052e-13ddee339f2b" /*RenalWard--MainRoom--Bed 1--Simulated Hospital--BED--Main Building--5*/
+                        },
+                        "status": "active"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}

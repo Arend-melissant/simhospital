@@ -56,7 +56,7 @@ func (g *Generator) Random() *ir.Address {
 		City:       g.city(),
 		PostalCode: g.postCode(),
 		Country:    g.Country,
-		Type:       "HOME",
+		Type:       "home",
 	}
 }
 

@@ -32,6 +32,7 @@ import (
 	"github.com/google/simhospital/pkg/logging"
 	"github.com/google/simhospital/pkg/monitoring"
 	"github.com/google/simhospital/pkg/rate"
+	"github.com/google/simhospital/pkg/read"
 	"github.com/google/simhospital/pkg/starter"
 )
 
@@ -57,6 +58,7 @@ type APIEndpointAndHandler struct {
 // Hospital wraps the hospital.Hospital and implements the run functionality.
 type Hospital struct {
 	hospital                     *hospital.Hospital
+	readIdController             *read.Controller
 	pathwayRateController        *rate.Controller
 	pathwayStarter               *starter.PathwayStarter
 	additionalDashboardEndpoints []EndpointAndHandler
@@ -141,6 +143,7 @@ func New(h *hospital.Hospital, config Config) (*Hospital, error) {
 	return &Hospital{
 		hospital:                     h,
 		pathwayRateController:        rate.NewController(config.PathwaysPerHour, time.Hour),
+		readIdController:        	  read.NewController(h),
 		pathwayStarter:               config.PathwayStarter,
 		additionalDashboardEndpoints: config.AdditionalDashboardEndpoints,
 		authenticatedEndpoints:       config.AuthenticatedEndpoints,
@@ -395,6 +398,7 @@ func (h *Hospital) setupEndpoints() *http.ServeMux {
 	m := http.NewServeMux()
 	m.Handle(fmt.Sprintf("/%s/", h.dashboardURI), http.StripPrefix(fmt.Sprintf("/%s/", h.dashboardURI), http.FileServer(http.Dir(h.dashboardStaticDir))))
 	endpoints := append([]EndpointAndHandler{
+		{Endpoint: "readId", Handler: h.readIdController.ServeHTTP},
 		{Endpoint: "pathwayRate", Handler: h.pathwayRateController.ServeHTTP},
 		{Endpoint: "pathwayStarter", Handler: h.pathwayStarter.ServeHTTP},
 	}, h.additionalDashboardEndpoints...)

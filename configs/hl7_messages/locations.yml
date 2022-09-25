@@ -27,6 +27,13 @@ Renal:
   floor: 5
   room: MainRoom
 
+Renalx:
+  poc: RenalWard
+  facility: Simulated Hospital
+  building: Main Building
+  floor: 5
+  room: OtherRoom
+
 Non-renal:
   poc: OtherWard
   facility: Simulated Hospital

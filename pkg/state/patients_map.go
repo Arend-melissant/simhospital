@@ -104,6 +104,45 @@ func (m *PatientsMap) getFromSyncer(id string) *Patient {
 	return m.m[id]
 }
 
+// Get returns a patient if its identifier is present within the internal patients map or the syncer, in this order.
+func (m *PatientsMap) GetAll() []*Patient {
+	m.mutex.Lock()
+	defer m.mutex.Unlock()
+	return m.getAllFromSyncer()
+}
+
+func (m *PatientsMap) getAllFromSyncer() []*Patient {
+	logLocal := log.WithField("all patients", 0)
+	items, err := m.syncer.LoadAll()
+	if err != nil {
+		logLocal.WithError(err).Error("Could not get patients from synced storage")
+		return nil
+	}
+	if items == nil {
+		logLocal.Debug("Patients not found in syncer")
+		return nil
+	}
+	logLocal.Debug("Patients found via syncer")
+	// p := item.(Patient)
+	// id, err = p.ID()
+	// if err != nil {
+	// 	logLocal.WithError(err).Error("Found the patient in the synced storage, but could not get the patient ID")
+	// 	return nil
+	// }
+
+	patients := make([]*Patient, 0);
+	for _, item := range items {
+		p := item.(Patient)
+		_, err := p.ID()
+		if err != nil {
+			logLocal.WithError(err).Error("Found the patient in the synced storage, but could not get the patient ID")
+			return nil
+		}
+		patients = append(patients, &p)
+    }
+	return patients
+}
+
 // Delete deletes a patient from the internal patients map and the syncer, by its identifier.
 func (m *PatientsMap) Delete(id string) {
 	m.mutex.Lock()

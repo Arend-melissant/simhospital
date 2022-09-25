@@ -193,11 +193,11 @@ var (
 
 	// doctorTmpl represents the data type XCN: Extended Composite ID Number And Name For Persons
 	// http://hl7-definition.caristix.com:9010/HL7%20v2.3.1/segment/PV1?version=HL7%20v2.3.1&dataType=XCN
-	doctorTmpl = "{{.ID}}^{{.Surname}}^{{.FirstName}}^^^{{.Prefix}}^^^DRNBR^PRSNL^^^ORGDR"
+	doctorTmpl = "{{.ID}}^{{.Surname}}^{{.FirstName}}^^^{{.Prefix}}^^^DRNBR^official^^^ORGDR"
 
 	// personNameTmpl represents the data type XPN: Extended Person Name
 	// http://hl7-definition.caristix.com:9010/HL7%20v2.3.1/segment/PID?version=HL7%20v2.3.1&dataType=XPN
-	personNameTmpl = "{{.Surname}}^{{.FirstName}}^{{.MiddleName}}^{{.Suffix}}^{{.Prefix}}^{{.Degree}}^CURRENT"
+	personNameTmpl = "{{.Surname}}^{{.FirstName}}^{{.MiddleName}}^{{.Suffix}}^{{.Prefix}}^{{.Degree}}^official"
 
 	// addressTmpl represents the data type XAD: Extended Address
 	// http://hl7-definition.caristix.com:9010/HL7%20v2.3.1/segment/PID?version=HL7%20v2.3.1&dataType=XAD
@@ -205,7 +205,7 @@ var (
 
 	// homeNumberTmpl represents the data type XTN: Extended Telecommunication Number
 	// http://hl7-definition.caristix.com:9010/HL7%20v2.3.1/segment/PID?version=HL7%20v2.3.1&dataType=XTN
-	homeNumberTmpl = "{{.}}^HOME"
+	homeNumberTmpl = "{{.}}^home"
 
 	// ceTmpl represents the data type CE: Coded Element
 	// http://hl7-definition.caristix.com:9010/HL7%20v2.3.1/segment/PID?version=HL7%20v2.3.1&dataType=CE

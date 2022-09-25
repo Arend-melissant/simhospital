@@ -68,8 +68,8 @@ var (
 
 	// Default value for cpb.AddressUseCode_Value is AddressUseCode_INVALID_UNINITIALIZED.
 	internalToFHIRAddressType = map[string]cpb.AddressUseCode_Value{
-		"HOME": cpb.AddressUseCode_HOME,
-		"WORK": cpb.AddressUseCode_WORK,
+		"home": cpb.AddressUseCode_HOME,
+		"work": cpb.AddressUseCode_WORK,
 	}
 
 	// Default value for cpb.EncounterStatusCode is EncounterStatusCode_INVALID_UNINITIALIZED.

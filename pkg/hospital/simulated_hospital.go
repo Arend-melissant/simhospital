@@ -796,3 +796,15 @@ func (h *Hospital) MessagesLen() int {
 func (h *Hospital) PatientExists(id string) bool {
 	return h.patients.Get(id) != nil
 }
+
+func (h *Hospital) GetPatient(id string) *state.Patient {
+	return h.patients.Get(id)
+}
+
+func (h *Hospital) GetAllPatients() []*state.Patient {
+	return h.patients.GetAll()
+}
+
+func (h *Hospital) GetPatientCount() int {
+	return h.patients.Len()
+}

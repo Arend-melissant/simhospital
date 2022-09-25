@@ -77,7 +77,7 @@ func TestGenerate(t *testing.T) {
 					City:       "CITY",
 					PostalCode: "ABC DEF",
 					Country:    "COUNTRY",
-					Type:       "HOME",
+					Type:       "home",
 				},
 			},
 			Class: "IMP",

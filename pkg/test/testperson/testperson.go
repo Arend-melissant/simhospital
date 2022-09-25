@@ -38,7 +38,7 @@ func New() *ir.Person {
 			City:       "Croydon",
 			PostalCode: "XY9 8ZZ",
 			Country:    "UK",
-			Type:       "HOME",
+			Type:       "home",
 		},
 		MRN:   "123456",
 		NHS:   "0714630667",
