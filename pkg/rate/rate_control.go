@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
 )
 
 var log = logging.ForCallerPackage()

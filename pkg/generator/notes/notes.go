@@ -26,11 +26,11 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/files"
-	"github.com/google/simhospital/pkg/generator/text"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/files"
+	"github.com/Arend-melissant/simhospital/pkg/generator/text"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
 )
 
 const (

@@ -19,12 +19,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/doctor"
-	"github.com/google/simhospital/pkg/location"
-	"github.com/google/simhospital/pkg/orderprofile"
-	"github.com/google/simhospital/pkg/test"
-	"github.com/google/simhospital/pkg/test/testclock"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/doctor"
+	"github.com/Arend-melissant/simhospital/pkg/location"
+	"github.com/Arend-melissant/simhospital/pkg/orderprofile"
+	"github.com/Arend-melissant/simhospital/pkg/test"
+	"github.com/Arend-melissant/simhospital/pkg/test/testclock"
 )
 
 func TestValidateProdPathways(t *testing.T) {

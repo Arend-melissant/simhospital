@@ -22,10 +22,10 @@ import (
 	"testing"
 
 	"github.com/sirupsen/logrus"
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/pathway"
-	"github.com/google/simhospital/pkg/test"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/test"
 )
 
 func TestMain(m *testing.M) {

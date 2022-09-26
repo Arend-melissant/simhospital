@@ -21,12 +21,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/google/simhospital/pkg/hl7"
-	"github.com/google/simhospital/pkg/hospital"
-	. "github.com/google/simhospital/pkg/hospital/runner"
-	"github.com/google/simhospital/pkg/test/testclock"
-	"github.com/google/simhospital/pkg/test/testhospital"
-	"github.com/google/simhospital/pkg/test/testwrite"
+	"github.com/Arend-melissant/simhospital/pkg/hl7"
+	"github.com/Arend-melissant/simhospital/pkg/hospital"
+	. "github.com/Arend-melissant/simhospital/pkg/hospital/runner"
+	"github.com/Arend-melissant/simhospital/pkg/test/testclock"
+	"github.com/Arend-melissant/simhospital/pkg/test/testhospital"
+	"github.com/Arend-melissant/simhospital/pkg/test/testwrite"
 )
 
 const (

@@ -21,8 +21,8 @@ import (
 	//"strconv"
 	"encoding/json"
 
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/hospital"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/hospital"
 )
 
 var log = logging.ForCallerPackage()

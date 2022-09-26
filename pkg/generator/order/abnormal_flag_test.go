@@ -19,9 +19,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/constants"
-	"github.com/google/simhospital/pkg/test"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/test"
 )
 
 func TestToHL7(t *testing.T) {

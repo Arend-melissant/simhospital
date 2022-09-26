@@ -28,16 +28,16 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/state"
-	"github.com/google/simhospital/pkg/state/persist"
-	//"github.com/google/simhospital/pkg/state/persistdb"
-	"github.com/google/simhospital/pkg/state/persistazure"
-	"github.com/google/simhospital/pkg/hl7"
-	"github.com/google/simhospital/pkg/hospital"
-	"github.com/google/simhospital/pkg/hospital/runner"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/starter"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/state"
+	"github.com/Arend-melissant/simhospital/pkg/state/persist"
+	//"github.com/Arend-melissant/simhospital/pkg/state/persistdb"
+	"github.com/Arend-melissant/simhospital/pkg/state/persistazure"
+	"github.com/Arend-melissant/simhospital/pkg/hl7"
+	"github.com/Arend-melissant/simhospital/pkg/hospital"
+	"github.com/Arend-melissant/simhospital/pkg/hospital/runner"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/starter"
 )
 
 var (

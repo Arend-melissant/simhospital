@@ -18,8 +18,8 @@ package gender
 import (
 	"math/rand"
 
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
 
 	cpb "github.com/google/fhir/go/proto/google/fhir/proto/r4/core/codes_go_proto"
 )

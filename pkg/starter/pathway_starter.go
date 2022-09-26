@@ -23,11 +23,11 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/hl7"
-	"github.com/google/simhospital/pkg/hospital"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/hl7"
+	"github.com/Arend-melissant/simhospital/pkg/hospital"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
 )
 
 const (

@@ -24,17 +24,17 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/constants"
-	"github.com/google/simhospital/pkg/gender"
-	"github.com/google/simhospital/pkg/generator/names"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/pathway"
-	"github.com/google/simhospital/pkg/test"
-	"github.com/google/simhospital/pkg/test/testclock"
-	"github.com/google/simhospital/pkg/test/testid"
-	"github.com/google/simhospital/pkg/test/testperson"
-	"github.com/google/simhospital/pkg/test/testwrite"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/gender"
+	"github.com/Arend-melissant/simhospital/pkg/generator/names"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/test"
+	"github.com/Arend-melissant/simhospital/pkg/test/testclock"
+	"github.com/Arend-melissant/simhospital/pkg/test/testid"
+	"github.com/Arend-melissant/simhospital/pkg/test/testperson"
+	"github.com/Arend-melissant/simhospital/pkg/test/testwrite"
 )
 
 var (

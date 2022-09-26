@@ -22,15 +22,15 @@ import (
 
 	cpb "github.com/google/fhir/go/proto/google/fhir/proto/r4/core/codes_go_proto"
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/constants"
-	"github.com/google/simhospital/pkg/doctor"
-	"github.com/google/simhospital/pkg/generator/id"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/message"
-	"github.com/google/simhospital/pkg/orderprofile"
-	"github.com/google/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/doctor"
+	"github.com/Arend-melissant/simhospital/pkg/generator/id"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/message"
+	"github.com/Arend-melissant/simhospital/pkg/orderprofile"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
 )
 
 var log = logging.ForCallerPackage()

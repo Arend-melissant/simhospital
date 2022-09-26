@@ -22,7 +22,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
 )
 
 // Person represents a person.

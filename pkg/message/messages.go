@@ -22,10 +22,10 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/constants"
-	"github.com/google/simhospital/pkg/hl7"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/hl7"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
 )
 
 // The fields in this block are HL7 message types Simulated Hospital supports.

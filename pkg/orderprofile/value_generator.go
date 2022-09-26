@@ -20,7 +20,7 @@ import (
 	"regexp"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
 )
 
 const valueFormat = "%.2f"

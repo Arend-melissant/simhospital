@@ -25,8 +25,8 @@ import (
 	"github.com/pkg/errors"
 	"google.golang.org/api/healthcare/v1"
 	"google.golang.org/api/option"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
 )
 
 var log = logging.ForCallerPackage()

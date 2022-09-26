@@ -34,7 +34,7 @@ Prerequisites: install [bazel](https://bazel.build/) and
 Download the code into a `simhospital` local folder.
 
 ```shell
-git clone https://github.com/google/simhospital.git
+git clone https://github.com/Arend-melissant/simhospital.git
 ```
 
 `cd` into the new folder and create a local variable for the path. This will

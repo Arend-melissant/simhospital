@@ -21,11 +21,11 @@ import (
 
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
-	"github.com/google/simhospital/pkg/clock"
-	"github.com/google/simhospital/pkg/doctor"
-	"github.com/google/simhospital/pkg/files"
-	"github.com/google/simhospital/pkg/location"
-	"github.com/google/simhospital/pkg/orderprofile"
+	"github.com/Arend-melissant/simhospital/pkg/clock"
+	"github.com/Arend-melissant/simhospital/pkg/doctor"
+	"github.com/Arend-melissant/simhospital/pkg/files"
+	"github.com/Arend-melissant/simhospital/pkg/location"
+	"github.com/Arend-melissant/simhospital/pkg/orderprofile"
 )
 
 // UnknownPathwayName is the default pathway name, if it is not explicitly specified.

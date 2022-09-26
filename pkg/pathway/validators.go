@@ -23,12 +23,12 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/clock"
-	"github.com/google/simhospital/pkg/constants"
-	"github.com/google/simhospital/pkg/doctor"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/location"
-	"github.com/google/simhospital/pkg/orderprofile"
+	"github.com/Arend-melissant/simhospital/pkg/clock"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/doctor"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/location"
+	"github.com/Arend-melissant/simhospital/pkg/orderprofile"
 )
 
 func (d *Delay) valid() error {

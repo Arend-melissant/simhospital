@@ -25,9 +25,9 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/google/simhospital/pkg/test/testclock"
-	"github.com/google/simhospital/pkg/test/testlocation"
-	"github.com/google/simhospital/pkg/test/testwrite"
+	"github.com/Arend-melissant/simhospital/pkg/test/testclock"
+	"github.com/Arend-melissant/simhospital/pkg/test/testlocation"
+	"github.com/Arend-melissant/simhospital/pkg/test/testwrite"
 )
 
 const defaultPathwayName = "random_pathway"

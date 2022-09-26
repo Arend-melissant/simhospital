@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/google/simhospital/pkg/location"
-	"github.com/google/simhospital/pkg/test/testwrite"
+	"github.com/Arend-melissant/simhospital/pkg/location"
+	"github.com/Arend-melissant/simhospital/pkg/test/testwrite"
 )
 
 // roomMgrTmpl is the YML template for location.RoomManager.

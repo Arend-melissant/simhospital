@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/google/simhospital/pkg/hl7"
+	"github.com/Arend-melissant/simhospital/pkg/hl7"
 )
 
 // Parse parses the given message.

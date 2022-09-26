@@ -19,7 +19,7 @@ import (
 	"errors"
 	"io"
 
-	"github.com/google/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
 )
 
 // ByteOutput is a resource output that writes to a byte buffer.

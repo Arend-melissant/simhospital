@@ -22,9 +22,9 @@ import (
 
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
-	"github.com/google/simhospital/pkg/files"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/sample"
+	"github.com/Arend-melissant/simhospital/pkg/files"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/sample"
 )
 
 var log = logging.ForCallerPackage()

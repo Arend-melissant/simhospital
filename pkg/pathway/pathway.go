@@ -26,10 +26,10 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/clock"
-	"github.com/google/simhospital/pkg/constants"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/orderprofile"
+	"github.com/Arend-melissant/simhospital/pkg/clock"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/orderprofile"
 )
 
 // The following constants represent step types.

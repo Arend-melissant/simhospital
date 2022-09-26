@@ -16,9 +16,9 @@
 package header
 
 import (
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/message"
-	"github.com/google/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/message"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
 )
 
 // Generator is a generator of headers.

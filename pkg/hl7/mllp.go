@@ -20,7 +20,7 @@ import (
 	"net"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
 )
 
 const (

@@ -19,8 +19,8 @@ import (
 	"path"
 	"testing"
 
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/test/testwrite"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/test/testwrite"
 )
 
 func TestDirectoryOutput(t *testing.T) {

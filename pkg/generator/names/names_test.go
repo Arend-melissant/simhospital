@@ -18,8 +18,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/gender"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/gender"
 )
 
 func TestPrefixMiddleNameSuffixDegreeSurname(t *testing.T) {

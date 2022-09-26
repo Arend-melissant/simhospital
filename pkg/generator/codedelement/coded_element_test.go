@@ -19,7 +19,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/google/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/config"
 )
 
 func TestSimpleDateGenerator(t *testing.T) {

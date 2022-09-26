@@ -23,11 +23,11 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/google/simhospital/pkg/generator/header"
-	"github.com/google/simhospital/pkg/hl7"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/message"
-	"github.com/google/simhospital/pkg/test/testwrite"
+	"github.com/Arend-melissant/simhospital/pkg/generator/header"
+	"github.com/Arend-melissant/simhospital/pkg/hl7"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/message"
+	"github.com/Arend-melissant/simhospital/pkg/test/testwrite"
 )
 
 const (

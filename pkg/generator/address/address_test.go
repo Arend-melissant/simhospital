@@ -20,7 +20,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/google/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/config"
 )
 
 func TestRandom(t *testing.T) {

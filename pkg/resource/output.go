@@ -22,7 +22,7 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
 )
 
 // Output defines an object which returns a writer that resource are written to.

@@ -19,7 +19,7 @@ import (
 	"fmt"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
 )
 
 const generatedIDPattern = "generated-%d"

@@ -16,9 +16,9 @@
 package processor
 
 import (
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/generator"
-	"github.com/google/simhospital/pkg/location"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/generator"
+	"github.com/Arend-melissant/simhospital/pkg/location"
 )
 
 // Config contains the configuration of event processors.

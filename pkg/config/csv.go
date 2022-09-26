@@ -23,9 +23,9 @@ import (
 	"strconv"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/files"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/sample"
+	"github.com/Arend-melissant/simhospital/pkg/files"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/sample"
 )
 
 // nilKey is a keyword to use in CSV files that are loaded with loadCSVWithFrequency.

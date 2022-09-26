@@ -20,9 +20,9 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/message"
-	"github.com/google/simhospital/pkg/state"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/message"
+	"github.com/Arend-melissant/simhospital/pkg/state"
 )
 
 // HasMessages returns whether there are messages in the Message queue, independently of when they are due.

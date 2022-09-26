@@ -20,7 +20,7 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/google/simhospital/pkg/files"
+	"github.com/Arend-melissant/simhospital/pkg/files"
 )
 
 // ClinicalNote represents a document that contains a clinical note.

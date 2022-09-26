@@ -20,9 +20,9 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/google/simhospital/pkg/constants"
-	"github.com/google/simhospital/pkg/orderprofile"
-	"github.com/google/simhospital/pkg/test/testclock"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/orderprofile"
+	"github.com/Arend-melissant/simhospital/pkg/test/testclock"
 )
 
 func TestGender(t *testing.T) {

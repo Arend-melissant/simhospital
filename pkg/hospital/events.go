@@ -19,11 +19,11 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/pathway"
-	"github.com/google/simhospital/pkg/processor"
-	"github.com/google/simhospital/pkg/state"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/processor"
+	"github.com/Arend-melissant/simhospital/pkg/state"
 )
 
 // HasEvents returns whether there are events in the Event queue, independently of when they are due.

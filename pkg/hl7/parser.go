@@ -35,7 +35,7 @@ import (
 	"golang.org/x/text/encoding/charmap"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
-	"github.com/google/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
 )
 
 const (

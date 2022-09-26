@@ -21,11 +21,11 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/google/simhospital/pkg/constants"
-	. "github.com/google/simhospital/pkg/hospital"
-	"github.com/google/simhospital/pkg/ir"
-	"github.com/google/simhospital/pkg/pathway"
-	"github.com/google/simhospital/pkg/test/testresource"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
+	. "github.com/Arend-melissant/simhospital/pkg/hospital"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/test/testresource"
 )
 
 // TestGenerateResources verifies the interaction between the `GenerateResources`

@@ -20,8 +20,8 @@ import (
 	"math/rand"
 	"strings"
 
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
 )
 
 // Generator is a generator of addresses.

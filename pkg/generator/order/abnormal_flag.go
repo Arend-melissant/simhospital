@@ -15,8 +15,8 @@
 package order
 
 import (
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/constants"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/constants"
 )
 
 // AbnormalFlagConvertor converts abnormal flag values.

@@ -27,7 +27,7 @@ import (
 	"testing"
 
 	"github.com/sirupsen/logrus"
-	"github.com/google/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
 )
 
 func funcName(v reflect.Value) string {

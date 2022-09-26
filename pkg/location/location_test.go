@@ -20,10 +20,10 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/google/simhospital/pkg/ir"
-	. "github.com/google/simhospital/pkg/location"
-	"github.com/google/simhospital/pkg/test/testlocation"
-	"github.com/google/simhospital/pkg/test/testwrite"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
+	. "github.com/Arend-melissant/simhospital/pkg/location"
+	"github.com/Arend-melissant/simhospital/pkg/test/testlocation"
+	"github.com/Arend-melissant/simhospital/pkg/test/testwrite"
 )
 
 const aAndEID = "ED"

@@ -20,8 +20,8 @@ import (
 	"fmt"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/monitoring"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/monitoring"
 )
 
 const (

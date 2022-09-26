@@ -21,16 +21,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/google/simhospital/pkg/config"
-	"github.com/google/simhospital/pkg/hospital"
-	"github.com/google/simhospital/pkg/location"
-	"github.com/google/simhospital/pkg/pathway"
-	"github.com/google/simhospital/pkg/test"
-	"github.com/google/simhospital/pkg/test/testaddress"
-	"github.com/google/simhospital/pkg/test/testclock"
-	"github.com/google/simhospital/pkg/test/testhl7"
-	"github.com/google/simhospital/pkg/test/testid"
-	"github.com/google/simhospital/pkg/test/testresource"
+	"github.com/Arend-melissant/simhospital/pkg/config"
+	"github.com/Arend-melissant/simhospital/pkg/hospital"
+	"github.com/Arend-melissant/simhospital/pkg/location"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/test"
+	"github.com/Arend-melissant/simhospital/pkg/test/testaddress"
+	"github.com/Arend-melissant/simhospital/pkg/test/testclock"
+	"github.com/Arend-melissant/simhospital/pkg/test/testhl7"
+	"github.com/Arend-melissant/simhospital/pkg/test/testid"
+	"github.com/Arend-melissant/simhospital/pkg/test/testresource"
 )
 
 const defaultClockTick = time.Second

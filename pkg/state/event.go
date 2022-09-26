@@ -20,8 +20,8 @@ import (
 	"time"
 
 	"github.com/golang-collections/go-datastructures/queue"
-	"github.com/google/simhospital/pkg/pathway"
-	"github.com/google/simhospital/pkg/state/persist"
+	"github.com/Arend-melissant/simhospital/pkg/pathway"
+	"github.com/Arend-melissant/simhospital/pkg/state/persist"
 )
 
 // Event is a stateful object representing Simulated Hospital events currently in progress.

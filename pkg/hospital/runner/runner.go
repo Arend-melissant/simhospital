@@ -26,14 +26,14 @@ import (
 	"github.com/pkg/errors"
 	"golang.org/x/sync/errgroup"
 	"github.com/gorilla/mux"
-	"github.com/google/simhospital/pkg/clock"
-	"github.com/google/simhospital/pkg/hospital"
-	"github.com/google/simhospital/pkg/hospital/runner/authentication"
-	"github.com/google/simhospital/pkg/logging"
-	"github.com/google/simhospital/pkg/monitoring"
-	"github.com/google/simhospital/pkg/rate"
-	"github.com/google/simhospital/pkg/read"
-	"github.com/google/simhospital/pkg/starter"
+	"github.com/Arend-melissant/simhospital/pkg/clock"
+	"github.com/Arend-melissant/simhospital/pkg/hospital"
+	"github.com/Arend-melissant/simhospital/pkg/hospital/runner/authentication"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/monitoring"
+	"github.com/Arend-melissant/simhospital/pkg/rate"
+	"github.com/Arend-melissant/simhospital/pkg/read"
+	"github.com/Arend-melissant/simhospital/pkg/starter"
 )
 
 var (

@@ -18,7 +18,7 @@ package testaddress
 import (
 	"fmt"
 
-	"github.com/google/simhospital/pkg/ir"
+	"github.com/Arend-melissant/simhospital/pkg/ir"
 )
 
 // ArbitraryGenerator is a generator of addresses with predefined country and cities,
