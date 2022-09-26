@@ -3,3 +3,4 @@ bazel-bin
 bazel-out
 bazel-simhospital
 bazel-testlogs
+*.db
