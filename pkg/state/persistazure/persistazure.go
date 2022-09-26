@@ -1,14 +1,18 @@
 package persistazure
 
 import (
+	"context"
 	"encoding/json"
 	"sort"
+	"fmt"
 	"github.com/pkg/errors"
 	"github.com/Arend-melissant/simhospital/pkg/state/persist"
-	bolt "github.com/coreos/bbolt"
+	//bolt "github.com/coreos/bbolt"
 	"github.com/Arend-melissant/simhospital/pkg/state"
 	"github.com/Arend-melissant/simhospital/pkg/logging"
-	//"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
+
+	"github.com/Arend-melissant/simhospital/pkg/state/persist/persistazure/cosmosdb"
 )
 
 const (
@@ -30,38 +34,57 @@ type DbItemSyncer struct {
 	syncType int
 }
 
-// func open() *ServiceClient {
-// 	connStr := "DefaultEndpointsProtocol=https;AccountName=<myAccountName>;AccountKey=<myAccountKey>;EndpointSuffix=core.windows.net"
-//     serviceClient, err := aztables.NewServiceClientFromConnectionString(connStr, nil)
-//     if err != nil {
-//         panic(err)
-//     }
-// 	return serviceClient
-// }
+func serviceInit() *aztables.ServiceClient{ 
+	connStr := "DefaultEndpointsProtocol=https;AccountName=simhospstorage;AccountKey=SBFvWmf/QfGYQEPOmHaoviD4yTfjBhD/5xS6laBGd2EXR4Zc1EfFBObIq8pJtj1Xw2MN1Brc9fxT+ASt/A8WIA==;EndpointSuffix=core.windows.net"
+    serviceClient, err := aztables.NewServiceClientFromConnectionString(connStr, nil)
+    if err != nil {
+        panic(err)
+    }
+
+	_, err = serviceClient.CreateTable(context.TODO(), "HL7Message", nil)
+	_, err = serviceClient.CreateTable(context.TODO(), "Event", nil)
+	_, err = serviceClient.CreateTable(context.TODO(), "Patient", nil)
+	return serviceClient
+}
+
+func open(tabel string) *aztables.Client { 
+	connUrl := "https://simhospstorage.table.core.windows.net/?sv=2021-06-08&ss=t&srt=sco&sp=rwdlacu&se=2023-01-01T00:33:32Z&st=2022-09-26T15:33:32Z&spr=https&sig=7Z3EfmFiQ%2FqQR%2Bfm4GERkh6HWvsBO5QyaTuh%2BwjSonw%3D"
+
+    client, err := aztables.NewClientWithNoCredential(connUrl, nil)
+    if err != nil {
+        panic(err)
+    }
+
+	return client
+}
 
 // NewItemSyncer initializes the ItemSyncer.
 func NewItemSyncer(syncType int) *DbItemSyncer {
-	db, err := bolt.Open("my.db", 0600, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
-	db.Update(func(tx *bolt.Tx) error {
-		_, err1 := tx.CreateBucket([]byte("HL7Message"))
-		if err1 != nil {
-			log.Errorf("create bucket: %s", err1)
-		} 
-		_, err2 := tx.CreateBucket([]byte("Event"))
-		if err2 != nil {
-			log.Errorf("create bucket: %s", err2)
-		} 
-		_, err3 := tx.CreateBucket([]byte("Patient"))
-		if err3 != nil {
-			log.Errorf("create bucket: %s", err3)
-		} 
+	serviceInit()
+	//fmt.Println(sc)
+
+	
+	// db, err := bolt.Open("my.db", 0600, nil)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer db.Close()
+	// db.Update(func(tx *bolt.Tx) error {
+	// 	_, err1 := tx.CreateBucket([]byte("HL7Message"))
+	// 	if err1 != nil {
+	// 		log.Errorf("create bucket: %s", err1)
+	// 	} 
+	// 	_, err2 := tx.CreateBucket([]byte("Event"))
+	// 	if err2 != nil {
+	// 		log.Errorf("create bucket: %s", err2)
+	// 	} 
+	// 	_, err3 := tx.CreateBucket([]byte("Patient"))
+	// 	if err3 != nil {
+	// 		log.Errorf("create bucket: %s", err3)
+	// 	} 
 		
-		return nil
-	})
+	// 	return nil
+	// })
 
 	return &DbItemSyncer{m: map[string]persist.MarshallableItem{}, syncType: syncType}
 }
@@ -99,17 +122,41 @@ func (s *DbItemSyncer) Write(item persist.MarshallableItem) error {
 		return errors.Wrap(err, "cannot get ID")
 	}
 	log.Infof("PersistDB: WRITE - %s - %s",str,id)
-	// s.m[id] = item
-	db, err := bolt.Open("my.db", 0600, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
-	db.Update(func(tx *bolt.Tx) error {
-		bucket := tx.Bucket([]byte(str))
-		err := bucket.Put([]byte(id), []byte(b))
-		return err
-	})
+	log.Infof("WRITE - %s",string(b))
+
+	myEntity := aztables.EDMEntity{
+        Entity: aztables.Entity{
+            PartitionKey: id,
+            RowKey: "RedMarker",
+        },
+        Properties: map[string]interface{} {
+			"entry": string(b),
+        },
+    }
+
+    marshalled, err := json.Marshal(myEntity)
+    if err != nil {
+        panic(err)
+    }
+
+	sc := serviceInit()
+	client := sc.NewClient(str)
+    resp, err := client.AddEntity(context.TODO(), marshalled, nil)
+    if err != nil {
+        panic(err)
+    }
+	fmt.Println(resp)
+	// // s.m[id] = item
+	// db, err := bolt.Open("my.db", 0600, nil)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer db.Close()
+	// db.Update(func(tx *bolt.Tx) error {
+	// 	bucket := tx.Bucket([]byte(str))
+	// 	err := bucket.Put([]byte(id), []byte(b))
+	// 	return err
+	// })
 	return nil
 }
 
@@ -125,17 +172,17 @@ func (s *DbItemSyncer) Delete(item persist.MarshallableItem) error {
 		return errors.Wrap(err, "cannot get ID")
 	}
 	log.Infof("PersistDB: DELETE - %s - %s",str,id)
-	db, err := bolt.Open("my.db", 0600, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
+	// db, err := bolt.Open("my.db", 0600, nil)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer db.Close()
 
-	db.Update(func(tx *bolt.Tx) error {
-		bucket := tx.Bucket([]byte(str))
-		err := bucket.Delete([]byte(id))
-		return err
-	})
+	// db.Update(func(tx *bolt.Tx) error {
+	// 	bucket := tx.Bucket([]byte(str))
+	// 	err := bucket.Delete([]byte(id))
+	// 	return err
+	// })
 	return nil
 }
 
@@ -143,29 +190,29 @@ func (s *DbItemSyncer) Delete(item persist.MarshallableItem) error {
 func GetAllDataFromBucket[T persist.MarshallableItem](s *DbItemSyncer) ([]persist.MarshallableItem, error) {
 	str := s.getSyncType()
 	log.Infof("LOADALL - %s", str)
-	db, err := bolt.Open("my.db", 0600, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
+	// db, err := bolt.Open("my.db", 0600, nil)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer db.Close()
 
 	data := make(map[string]T)
-	db.View(func(tx *bolt.Tx) error {
-		// Assume bucket exists and has keys
-		b := tx.Bucket([]byte(str))
+	// db.View(func(tx *bolt.Tx) error {
+	// 	// Assume bucket exists and has keys
+	// 	b := tx.Bucket([]byte(str))
 	
-		b.ForEach(func(k, v []byte) error {
-			var dat T
-			jerr := json.Unmarshal(v, &dat)
-			if jerr == nil {
-				data[string(k)] = dat
-			} else {
-				//fmt.Println(jerr)
-			}
-			return nil
-		})
-		return nil
-	})
+	// 	b.ForEach(func(k, v []byte) error {
+	// 		var dat T
+	// 		jerr := json.Unmarshal(v, &dat)
+	// 		if jerr == nil {
+	// 			data[string(k)] = dat
+	// 		} else {
+	// 			//fmt.Println(jerr)
+	// 		}
+	// 		return nil
+	// 	})
+	// 	return nil
+	// })
 
 	keys := make([]string, 0)
 	for id := range data {
@@ -200,21 +247,21 @@ func (s *DbItemSyncer) LoadAll() ([]persist.MarshallableItem, error) {
 func (s *DbItemSyncer) LoadByID(id string) (persist.MarshallableItem, error) {
 	str := s.getSyncType()
 	log.Infof("PersistDB: LOADBYID - %s - %s",str,id)
-	db, err := bolt.Open("my.db", 0600, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
+	// db, err := bolt.Open("my.db", 0600, nil)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer db.Close()
 	
 	var dat state.Patient
-	db.View(func(tx *bolt.Tx) error {
-		b := tx.Bucket([]byte(str))
-		v := b.Get([]byte(id))
-		if jerr := json.Unmarshal(v, &dat); err != nil {
-			panic(jerr)
-		}
-		return nil
-	})
+	// db.View(func(tx *bolt.Tx) error {
+	// 	b := tx.Bucket([]byte(str))
+	// 	v := b.Get([]byte(id))
+	// 	if jerr := json.Unmarshal(v, &dat); err != nil {
+	// 		panic(jerr)
+	// 	}
+	// 	return nil
+	// })
 	return dat, nil
 }
 
