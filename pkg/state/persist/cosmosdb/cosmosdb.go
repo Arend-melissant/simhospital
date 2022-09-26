@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore"
 	"github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos"
@@ -61,7 +60,7 @@ func CreateContainer(client *azcosmos.Client, databaseName, containerName, parti
 	}
 
 	// setting options upon container creation
-	throughputProperties := azcosmos.NewManualThroughputProperties(400) //defaults to 400 if not set
+	throughputProperties := azcosmos.NewManualThroughputProperties(100) //defaults to 400 if not set
 	options := &azcosmos.CreateContainerOptions{
 		ThroughputProperties: &throughputProperties,
 	}
@@ -215,7 +214,7 @@ func DeleteItem(client *azcosmos.Client, databaseName, containerName, partitionK
 		return err
 	}
 
-	og.Printf("Status %d. Item %v deleted. ActivityId %s. Consuming %v Request Units.\n", res.RawResponse.StatusCode, pk, res.ActivityID, res.RequestCharge)
+	log.Printf("Status %d. Item %v deleted. ActivityId %s. Consuming %v Request Units.\n", res.RawResponse.StatusCode, pk, res.ActivityID, res.RequestCharge)
 
 	return nil
 }

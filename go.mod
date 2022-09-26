@@ -4,6 +4,9 @@ go 1.18
 
 require (
 	cloud.google.com/go/storage v1.26.0
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.0.0
+	github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos v0.3.2
+	github.com/Azure/azure-sdk-for-go/sdk/data/aztables v1.0.1
 	github.com/coreos/bbolt v1.3.2
 	github.com/golang-collections/go-datastructures v0.0.0-20150211160725-59788d5eb259
 	github.com/google/fhir/go v0.0.0-20220919214340-03d780f05241
@@ -28,9 +31,6 @@ require (
 	cloud.google.com/go/compute v1.7.0 // indirect
 	cloud.google.com/go/iam v0.3.0 // indirect
 	github.com/Azure/azure-sdk-for-go v63.2.0+incompatible // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.0.0 // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos v0.3.2 // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/data/aztables v1.0.1 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect

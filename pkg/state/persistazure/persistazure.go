@@ -1,19 +1,29 @@
 package persistazure
 
 import (
-	"context"
-	"encoding/json"
+	//"encoding/json"
 	"sort"
-	"fmt"
-	"github.com/pkg/errors"
-	"github.com/Arend-melissant/simhospital/pkg/state/persist"
-	//bolt "github.com/coreos/bbolt"
-	"github.com/Arend-melissant/simhospital/pkg/state"
-	"github.com/Arend-melissant/simhospital/pkg/logging"
-	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
 
-	"github.com/Arend-melissant/simhospital/pkg/state/persist/persistazure/cosmosdb"
+	"github.com/pkg/errors"
+	"github.com/Arend-melissant/simhospital/pkg/logging"
+	"github.com/Arend-melissant/simhospital/pkg/state"
+	"github.com/Arend-melissant/simhospital/pkg/state/persist"
+	"github.com/Arend-melissant/simhospital/pkg/state/persist/cosmosdb"
+
+	//"github.com/Azure/azure-sdk-for-go/sdk/azcore"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos"
+	//bolt "github.com/coreos/bbolt"
 )
+
+var endpoint = "https://calidosfhircosmosdb.documents.azure.com:443/"
+var key = "RAjirMQfTXKPRiBuK1Jpz6V44Kw0AGAQXL2yN9P0206BN27Rn6cBimRbahIFlnuv23dFYFAHgMtpGFqi0hUVmw=="
+var databaseName = "calidosfhirconvert"
+var eventContainerName = "Event"
+var eventPartitionKey = "/id"
+var hl7MessageContainerName = "Hl7Message"
+var hl7MessagePartitionKey = "/id"
+var patientContainerName = "Patient"
+var patientPartitionKey = "/id"
 
 const (
 	MessageSyncer int = 0
@@ -34,28 +44,40 @@ type DbItemSyncer struct {
 	syncType int
 }
 
-func serviceInit() *aztables.ServiceClient{ 
-	connStr := "DefaultEndpointsProtocol=https;AccountName=simhospstorage;AccountKey=SBFvWmf/QfGYQEPOmHaoviD4yTfjBhD/5xS6laBGd2EXR4Zc1EfFBObIq8pJtj1Xw2MN1Brc9fxT+ASt/A8WIA==;EndpointSuffix=core.windows.net"
-    serviceClient, err := aztables.NewServiceClientFromConnectionString(connStr, nil)
-    if err != nil {
-        panic(err)
-    }
+func serviceInit() { 
+	cred, err := azcosmos.NewKeyCredential(key)
+	if err != nil {
+		log.Fatal("Failed to create a credential: ", err)
+	}
 
-	_, err = serviceClient.CreateTable(context.TODO(), "HL7Message", nil)
-	_, err = serviceClient.CreateTable(context.TODO(), "Event", nil)
-	_, err = serviceClient.CreateTable(context.TODO(), "Patient", nil)
-	return serviceClient
+	// Create a CosmosDB client
+	client, err := azcosmos.NewClientWithKey(endpoint, cred, nil)
+	if err != nil {
+		log.Fatal("Failed to create cosmos db client: ", err)
+	}
+	
+	err = cosmosdb.CreateDatabase(client, databaseName)
+	if err != nil {
+		log.Fatal("createDatabase failed: %s\n", err)
+	}
+
+	err = cosmosdb.CreateContainer(client, databaseName, eventContainerName, eventPartitionKey)
+	if err != nil {
+		log.Fatal("Event createContainer failed: %s\n", err)
+	}
+
+	err = cosmosdb.CreateContainer(client, databaseName, hl7MessageContainerName, hl7MessagePartitionKey)
+	if err != nil {
+		log.Fatal("Event createContainer failed: %s\n", err)
+	}
+
+	err = cosmosdb.CreateContainer(client, databaseName, patientContainerName, patientPartitionKey)
+	if err != nil {
+		log.Fatal("Event createContainer failed: %s\n", err)
+	}
 }
 
-func open(tabel string) *aztables.Client { 
-	connUrl := "https://simhospstorage.table.core.windows.net/?sv=2021-06-08&ss=t&srt=sco&sp=rwdlacu&se=2023-01-01T00:33:32Z&st=2022-09-26T15:33:32Z&spr=https&sig=7Z3EfmFiQ%2FqQR%2Bfm4GERkh6HWvsBO5QyaTuh%2BwjSonw%3D"
-
-    client, err := aztables.NewClientWithNoCredential(connUrl, nil)
-    if err != nil {
-        panic(err)
-    }
-
-	return client
+func open(tabel string) { 
 }
 
 // NewItemSyncer initializes the ItemSyncer.
@@ -115,37 +137,15 @@ func (s *DbItemSyncer) getSyncType() string {
 
 // Write writes an item to the map.
 func (s *DbItemSyncer) Write(item persist.MarshallableItem) error {
-	b,_ := json.Marshal(item)
+	//b,_ := json.Marshal(item)
 	str := s.getSyncType()
 	id, err := item.ID()
 	if err != nil {
 		return errors.Wrap(err, "cannot get ID")
 	}
 	log.Infof("PersistDB: WRITE - %s - %s",str,id)
-	log.Infof("WRITE - %s",string(b))
+	//log.Infof("WRITE - %s",string(b))
 
-	myEntity := aztables.EDMEntity{
-        Entity: aztables.Entity{
-            PartitionKey: id,
-            RowKey: "RedMarker",
-        },
-        Properties: map[string]interface{} {
-			"entry": string(b),
-        },
-    }
-
-    marshalled, err := json.Marshal(myEntity)
-    if err != nil {
-        panic(err)
-    }
-
-	sc := serviceInit()
-	client := sc.NewClient(str)
-    resp, err := client.AddEntity(context.TODO(), marshalled, nil)
-    if err != nil {
-        panic(err)
-    }
-	fmt.Println(resp)
 	// // s.m[id] = item
 	// db, err := bolt.Open("my.db", 0600, nil)
 	// if err != nil {
