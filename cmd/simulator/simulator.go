@@ -31,7 +31,8 @@ import (
 	"github.com/google/simhospital/pkg/config"
 	"github.com/google/simhospital/pkg/state"
 	"github.com/google/simhospital/pkg/state/persist"
-	"github.com/google/simhospital/pkg/state/persistdb"
+	//"github.com/google/simhospital/pkg/state/persistdb"
+	"github.com/google/simhospital/pkg/state/persistazure"
 	"github.com/google/simhospital/pkg/hl7"
 	"github.com/google/simhospital/pkg/hospital"
 	"github.com/google/simhospital/pkg/hospital/runner"
@@ -214,9 +215,9 @@ func createRunner(ctx context.Context) (*runner.Hospital, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create default hospital config")
 	}
-	ms := persistdb.NewItemSyncerWithDelete(persistdb.MessageSyncer, true)
-	es := persistdb.NewItemSyncerWithDelete(persistdb.EventSyncer, true)
-	ps := persistdb.NewItemSyncer(persistdb.PatientSyncer)
+	ms := persistazure.NewItemSyncerWithDelete(persistazure.MessageSyncer, true)
+	es := persistazure.NewItemSyncerWithDelete(persistazure.EventSyncer, true)
+	ps := persistazure.NewItemSyncer(persistazure.PatientSyncer)
 
 	syncers := map[string]persist.ItemSyncer{
 		state.MessageItemType: ms,

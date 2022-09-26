@@ -80,6 +80,14 @@ container_pull(
 )
 
 go_repository(
+    name = "com_github_Azure_azure-sdk-for-go_sdk_data_aztables",
+    build_file_proto_mode = "disable_global",
+    importpath = "github.com/Azure/azure-sdk-for-go/sdk/data/aztables",   
+    version = "v1.0.1",
+    sum = "h1:bFa9IcjvrCber6gGgDAUZ+I2bO8J7s8JxXmu9fhi2ss="
+)
+
+go_repository(
     name = "com_github_coreos_bbolt",
     build_file_proto_mode = "disable_global",
     importpath = "github.com/coreos/bbolt",

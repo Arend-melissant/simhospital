@@ -24,6 +24,7 @@ go_library(
     srcs = ["persistdb.go"],
     importpath = "github.com/google/simhospital/pkg/state/persistdb",
     deps = [
+        "//pkg/logging:go_default_library",
         "//pkg/state:go_default_library",
         "//pkg/state/persist:go_default_library",
         "@com_github_coreos_bbolt//:go_default_library",

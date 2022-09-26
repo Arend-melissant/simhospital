@@ -1,17 +1,14 @@
-package persistdb
+package persistazure
 
 import (
 	"encoding/json"
 	"sort"
-	//"log"
-	//"reflect"
-
-	//"github.com/golang-collections/go-datastructures/queue"
 	"github.com/pkg/errors"
 	"github.com/google/simhospital/pkg/state/persist"
 	bolt "github.com/coreos/bbolt"
 	"github.com/google/simhospital/pkg/state"
 	"github.com/google/simhospital/pkg/logging"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
 )
 
 const (
@@ -20,7 +17,6 @@ const (
 	PatientSyncer     = 2
 )
 
-const dbName = "simhosp.db"
 var log = logging.ForCallerPackage()
 
 // ItemSyncer implements the persist.ItemSyncer interface using a map.
@@ -34,9 +30,18 @@ type DbItemSyncer struct {
 	syncType int
 }
 
+func open *ServiceClient {
+	connStr := "DefaultEndpointsProtocol=https;AccountName=<myAccountName>;AccountKey=<myAccountKey>;EndpointSuffix=core.windows.net"
+    serviceClient, err := aztables.NewServiceClientFromConnectionString(connStr, nil)
+    if err != nil {
+        panic(err)
+    }
+	return serviceClient
+}
+
 // NewItemSyncer initializes the ItemSyncer.
 func NewItemSyncer(syncType int) *DbItemSyncer {
-	db, err := bolt.Open(dbName, 0600, nil)
+	db, err := bolt.Open("my.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -95,7 +100,7 @@ func (s *DbItemSyncer) Write(item persist.MarshallableItem) error {
 	}
 	log.Infof("PersistDB: WRITE - %s - %s",str,id)
 	// s.m[id] = item
-	db, err := bolt.Open(dbName, 0600, nil)
+	db, err := bolt.Open("my.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -120,7 +125,7 @@ func (s *DbItemSyncer) Delete(item persist.MarshallableItem) error {
 		return errors.Wrap(err, "cannot get ID")
 	}
 	log.Infof("PersistDB: DELETE - %s - %s",str,id)
-	db, err := bolt.Open(dbName, 0600, nil)
+	db, err := bolt.Open("my.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -138,7 +143,7 @@ func (s *DbItemSyncer) Delete(item persist.MarshallableItem) error {
 func GetAllDataFromBucket[T persist.MarshallableItem](s *DbItemSyncer) ([]persist.MarshallableItem, error) {
 	str := s.getSyncType()
 	log.Infof("LOADALL - %s", str)
-	db, err := bolt.Open(dbName, 0600, nil)
+	db, err := bolt.Open("my.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -195,7 +200,7 @@ func (s *DbItemSyncer) LoadAll() ([]persist.MarshallableItem, error) {
 func (s *DbItemSyncer) LoadByID(id string) (persist.MarshallableItem, error) {
 	str := s.getSyncType()
 	log.Infof("PersistDB: LOADBYID - %s - %s",str,id)
-	db, err := bolt.Open(dbName, 0600, nil)
+	db, err := bolt.Open("my.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

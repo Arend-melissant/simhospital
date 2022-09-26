@@ -1592,12 +1592,6 @@ def go_dependencies():
         version = "v3.0.0-20200313102051-9f266ea9e77c",
     )
     go_repository(
-        name = "io_etcd_go_bbolt",
-        importpath = "go.etcd.io/bbolt",
-        sum = "h1:MUGmc65QhB3pIlaQ5bB4LwqSj6GIonVJXpZiaKNyaKk=",
-        version = "v1.3.3",
-    )
-    go_repository(
         name = "io_etcd_go_etcd",
         importpath = "go.etcd.io/etcd",
         sum = "h1:VcrIfasaLFkyjk6KNlXQSzO+B0fZcnECiDrKJsfxka0=",
