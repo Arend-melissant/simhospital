@@ -17,6 +17,7 @@ package state
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/pkg/errors"
 	"github.com/Arend-melissant/simhospital/pkg/ir"
@@ -96,4 +97,35 @@ func (p Patient) ID() (string, error) {
 		return "", errors.New("cannot get ID: No PatientInfo or PatientInfo.Person")
 	}
 	return p.PatientInfo.Person.MRN, nil
+}
+
+var minTime = time.Unix(0, 0) // Jan 1, 1900
+var maxTime = minTime.Add(1<<63 - 1)
+
+func (p Patient) End() (time.Time) {
+	result := maxTime
+	for _,enc := range p.PatientInfo.Encounters	{
+		if (enc.Start.Valid && enc.Start.Time.Unix() != enc.End.Time.Unix()) {
+			result = enc.End.Time
+		}
+	}
+
+	if result.Unix() < 0 {
+		result = minTime
+	}
+	return result
+}
+
+func (p Patient) Start() (time.Time) {
+	result := minTime
+	for _,enc := range p.PatientInfo.Encounters	{
+		if (enc.Start.Valid && enc.Start.Time.Unix() != enc.End.Time.Unix()) {
+			result = enc.Start.Time	
+		}
+	}
+
+	if result.Unix() < 0 {
+		result = minTime
+	}
+	return result
 }

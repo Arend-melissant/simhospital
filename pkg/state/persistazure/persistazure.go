@@ -18,12 +18,10 @@ import (
 var endpoint = "https://calidosfhircosmosdb.documents.azure.com:443/"
 var key = "RAjirMQfTXKPRiBuK1Jpz6V44Kw0AGAQXL2yN9P0206BN27Rn6cBimRbahIFlnuv23dFYFAHgMtpGFqi0hUVmw=="
 var databaseName = "calidosfhirconvert"
-var eventContainerName = "Event"
-var eventPartitionKey = "/id"
-var hl7MessageContainerName = "Hl7Message"
-var hl7MessagePartitionKey = "/id"
-var patientContainerName = "Patient"
-var patientPartitionKey = "/id"
+var containerName = "Data"
+var partitionKey = "/id"
+
+var client *azcosmos.Client 
 
 const (
 	MessageSyncer int = 0
@@ -50,9 +48,10 @@ func serviceInit() {
 		log.Fatal("Failed to create a credential: ", err)
 	}
 
+	var clientErr error
 	// Create a CosmosDB client
-	client, err := azcosmos.NewClientWithKey(endpoint, cred, nil)
-	if err != nil {
+	client, clientErr = azcosmos.NewClientWithKey(endpoint, cred, nil)
+	if clientErr != nil {
 		log.Fatal("Failed to create cosmos db client: ", err)
 	}
 	
@@ -61,20 +60,11 @@ func serviceInit() {
 		log.Fatal("createDatabase failed: %s\n", err)
 	}
 
-	err = cosmosdb.CreateContainer(client, databaseName, eventContainerName, eventPartitionKey)
+	err = cosmosdb.CreateContainer(client, databaseName, containerName, partitionKey)
 	if err != nil {
-		log.Fatal("Event createContainer failed: %s\n", err)
+		log.Fatal("CreateContainer failed: %s\n", err)
 	}
 
-	err = cosmosdb.CreateContainer(client, databaseName, hl7MessageContainerName, hl7MessagePartitionKey)
-	if err != nil {
-		log.Fatal("Event createContainer failed: %s\n", err)
-	}
-
-	err = cosmosdb.CreateContainer(client, databaseName, patientContainerName, patientPartitionKey)
-	if err != nil {
-		log.Fatal("Event createContainer failed: %s\n", err)
-	}
 }
 
 func open(tabel string) { 
@@ -83,31 +73,6 @@ func open(tabel string) {
 // NewItemSyncer initializes the ItemSyncer.
 func NewItemSyncer(syncType int) *DbItemSyncer {
 	serviceInit()
-	//fmt.Println(sc)
-
-	
-	// db, err := bolt.Open("my.db", 0600, nil)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer db.Close()
-	// db.Update(func(tx *bolt.Tx) error {
-	// 	_, err1 := tx.CreateBucket([]byte("HL7Message"))
-	// 	if err1 != nil {
-	// 		log.Errorf("create bucket: %s", err1)
-	// 	} 
-	// 	_, err2 := tx.CreateBucket([]byte("Event"))
-	// 	if err2 != nil {
-	// 		log.Errorf("create bucket: %s", err2)
-	// 	} 
-	// 	_, err3 := tx.CreateBucket([]byte("Patient"))
-	// 	if err3 != nil {
-	// 		log.Errorf("create bucket: %s", err3)
-	// 	} 
-		
-	// 	return nil
-	// })
-
 	return &DbItemSyncer{m: map[string]persist.MarshallableItem{}, syncType: syncType}
 }
 
@@ -143,20 +108,9 @@ func (s *DbItemSyncer) Write(item persist.MarshallableItem) error {
 	if err != nil {
 		return errors.Wrap(err, "cannot get ID")
 	}
-	log.Infof("PersistDB: WRITE - %s - %s",str,id)
-	//log.Infof("WRITE - %s",string(b))
+	log.Infof("PersistDB: WRITE - %s - %s - %d - %d",str,id, item.Start().Unix(), item.End().Unix())
 
-	// // s.m[id] = item
-	// db, err := bolt.Open("my.db", 0600, nil)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer db.Close()
-	// db.Update(func(tx *bolt.Tx) error {
-	// 	bucket := tx.Bucket([]byte(str))
-	// 	err := bucket.Put([]byte(id), []byte(b))
-	// 	return err
-	// })
+	cosmosdb.CreateItem(client, databaseName, containerName, id, str, item /* []byte(b)*/, item.Start(), item.End())
 	return nil
 }
 

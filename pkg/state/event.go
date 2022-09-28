@@ -75,6 +75,14 @@ func (e Event) ID() (string, error) {
 
 }
 
+func (e Event) End() (time.Time) {
+	return e.EventTime
+}
+
+func (e Event) Start() (time.Time) {
+	return e.EventTime
+}
+
 // Marshal marshals the event for persistence.
 func (e Event) Marshal() ([]byte, error) {
 	return json.Marshal(e)

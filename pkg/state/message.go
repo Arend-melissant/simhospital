@@ -59,6 +59,14 @@ func (m HL7Message) ID() (string, error) {
 	return id(fmt.Sprintf("%v", m)), nil
 }
 
+func (m HL7Message) End() (time.Time) {
+	return m.MessageTime
+}
+
+func (m HL7Message) Start() (time.Time) {
+	return m.MessageTime
+}
+
 // Marshal marshals the HL7Message.
 func (m HL7Message) Marshal() ([]byte, error) {
 	return json.Marshal(m)

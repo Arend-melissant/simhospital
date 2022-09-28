@@ -15,10 +15,16 @@
 // Package persist contains persist-specific interfaces.
 package persist
 
+import (
+	"time"
+)
+
 // MarshallableItem is an interface for representing items that can be marshalled (for persisting).
 type MarshallableItem interface {
 	Marshal() ([]byte, error)
 	ID() (string, error)
+	Start() (time.Time)
+	End() (time.Time)
 }
 
 // ItemSyncer is a syncer of items from/to some kind of storage, such as a database.
