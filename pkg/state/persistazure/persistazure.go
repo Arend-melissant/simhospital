@@ -2,11 +2,10 @@ package persistazure
 
 import (
 	//"encoding/json"
-	"sort"
+	//"sort"
 
 	"github.com/pkg/errors"
 	"github.com/Arend-melissant/simhospital/pkg/logging"
-	"github.com/Arend-melissant/simhospital/pkg/state"
 	"github.com/Arend-melissant/simhospital/pkg/state/persist"
 	"github.com/Arend-melissant/simhospital/pkg/state/persist/cosmosdb"
 
@@ -19,7 +18,7 @@ var endpoint = "https://calidosfhircosmosdb.documents.azure.com:443/"
 var key = "RAjirMQfTXKPRiBuK1Jpz6V44Kw0AGAQXL2yN9P0206BN27Rn6cBimRbahIFlnuv23dFYFAHgMtpGFqi0hUVmw=="
 var databaseName = "calidosfhirconvert"
 var containerName = "Data"
-var partitionKey = "/id"
+var partitionKey = "/itemType"
 
 var client *azcosmos.Client 
 
@@ -102,7 +101,6 @@ func (s *DbItemSyncer) getSyncType() string {
 
 // Write writes an item to the map.
 func (s *DbItemSyncer) Write(item persist.MarshallableItem) error {
-	//b,_ := json.Marshal(item)
 	str := s.getSyncType()
 	id, err := item.ID()
 	if err != nil {
@@ -110,7 +108,7 @@ func (s *DbItemSyncer) Write(item persist.MarshallableItem) error {
 	}
 	log.Infof("PersistDB: WRITE - %s - %s - %d - %d",str,id, item.Start().Unix(), item.End().Unix())
 
-	cosmosdb.CreateItem(client, databaseName, containerName, id, str, item /* []byte(b)*/, item.Start(), item.End())
+	cosmosdb.CreateItem(client, databaseName, containerName, str, id, item /* []byte(b)*/, item.Start(), item.End())
 	return nil
 }
 
@@ -126,97 +124,36 @@ func (s *DbItemSyncer) Delete(item persist.MarshallableItem) error {
 		return errors.Wrap(err, "cannot get ID")
 	}
 	log.Infof("PersistDB: DELETE - %s - %s",str,id)
-	// db, err := bolt.Open("my.db", 0600, nil)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer db.Close()
 
-	// db.Update(func(tx *bolt.Tx) error {
-	// 	bucket := tx.Bucket([]byte(str))
-	// 	err := bucket.Delete([]byte(id))
-	// 	return err
-	// })
-	return nil
-}
+	err = cosmosdb.DeleteItem(client, databaseName, containerName, str, id)
 
-
-func GetAllDataFromBucket[T persist.MarshallableItem](s *DbItemSyncer) ([]persist.MarshallableItem, error) {
-	str := s.getSyncType()
-	log.Infof("LOADALL - %s", str)
-	// db, err := bolt.Open("my.db", 0600, nil)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer db.Close()
-
-	data := make(map[string]T)
-	// db.View(func(tx *bolt.Tx) error {
-	// 	// Assume bucket exists and has keys
-	// 	b := tx.Bucket([]byte(str))
-	
-	// 	b.ForEach(func(k, v []byte) error {
-	// 		var dat T
-	// 		jerr := json.Unmarshal(v, &dat)
-	// 		if jerr == nil {
-	// 			data[string(k)] = dat
-	// 		} else {
-	// 			//fmt.Println(jerr)
-	// 		}
-	// 		return nil
-	// 	})
-	// 	return nil
-	// })
-
-	keys := make([]string, 0)
-	for id := range data {
-		keys = append(keys, id)
-	}
-	sort.Strings(keys)
-
-	sorted := make([]persist.MarshallableItem, len(keys))
-	for i, k := range keys {
-		sorted[i] = data[k]
-	}
-	return sorted, nil
-
+	return err
 }
 
 // LoadAll returns a slice of all the items in the map, sorted by id.
 func (s *DbItemSyncer) LoadAll() ([]persist.MarshallableItem, error) {
 	str := s.getSyncType()
-	if (str == "HL7Message") {
-        data, _ := GetAllDataFromBucket[state.HL7Message](s)
-		return data, nil
-	} else if (str == "Event") {
-        data, _ := GetAllDataFromBucket[state.Event](s)
-		return data, nil
-	} else {
-        data, _ := GetAllDataFromBucket[state.Patient](s)
-		return data, nil
-	}
+	switch str {
+		case "Patient":
+			data, _ := cosmosdb.ReadItems(client, databaseName, containerName, str)
+			return data, nil
+		case "Event":
+			data, _ := cosmosdb.ReadItems(client, databaseName, containerName, str)
+			return data, nil
+		case "HL7Message":
+			data, _ := cosmosdb.ReadItems(client, databaseName, containerName, str)
+			return data, nil
+		}
+	return nil, nil
 }
 
 // LoadByID returns an item in the map with the provided id, if it exists.
 func (s *DbItemSyncer) LoadByID(id string) (persist.MarshallableItem, error) {
 	str := s.getSyncType()
 	log.Infof("PersistDB: LOADBYID - %s - %s",str,id)
-	// db, err := bolt.Open("my.db", 0600, nil)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer db.Close()
 	
-	var dat state.Patient
-	// db.View(func(tx *bolt.Tx) error {
-	// 	b := tx.Bucket([]byte(str))
-	// 	v := b.Get([]byte(id))
-	// 	if jerr := json.Unmarshal(v, &dat); err != nil {
-	// 		panic(jerr)
-	// 	}
-	// 	return nil
-	// })
-	return dat, nil
+	dat, err := cosmosdb.ReadItem(client, databaseName, containerName, str, id)
+	return dat, err
 }
 
 // Count returns number of elements in the syncer for testing.
