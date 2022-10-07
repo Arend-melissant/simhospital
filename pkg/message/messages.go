@@ -224,7 +224,7 @@ var (
 	// http://hl7-definition.caristix.com:9010/HL7%20v2.3.1/Default.aspx?version=HL7%20v2.5.1&dataType=CX
 	cxVisitTmpl = "{{.}}^^^^visitid"
 	// cxMRNTmpl is the template for MRNs.
-	cxMRNTmpl = "{{.MRN}}^^^SIMULATOR MRN^MRN"
+	cxMRNTmpl = "{{.MRN}}^^^MRN^MRN"
 	// stOBXNoteVal is the template for the OBX.Observation Value for documents.
 	stOBXNoteVal = "^^{{.ContentType}}^{{.DocumentEncoding}}^{{escape_HL7 .DocumentContent}}"
 

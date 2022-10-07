@@ -100,7 +100,7 @@ var (
 	excludePathwayNames = flag.String("exclude_pathway_names", "", "Comma-separated list of pathway names, or regular expressions that match pathway names, for the pathways to exclude from running "+
 		"when pathway_manager_type=distribution. Pathways that match both -pathway_names and -exclude_pathway_names are excluded. Excluded pathways can still be run from the dashboard.")
 
-	pathwaysPerHour = flag.Float64("pathways_per_hour", 1, "Number of pathways that should start per hour")
+	pathwaysPerHour = flag.Float64("pathways_per_hour", 0, "Number of pathways that should start per hour")
 	maxPathways     = flag.Int("max_pathways", -1, "Number of pathways to run before stopping. Pathways run from the dashboard do not count towards this limit. "+
 		"If negative, Simulated Hospital will keep running pathways indefinitely")
 
