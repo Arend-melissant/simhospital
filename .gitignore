@@ -4,3 +4,4 @@ bazel-out
 bazel-simhospital
 bazel-testlogs
 *.db
+simhospital.zip
