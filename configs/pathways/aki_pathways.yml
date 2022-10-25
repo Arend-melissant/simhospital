@@ -12,251 +12,69 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file contains Acute Kidney Injury (AKI) scenarios.
-# AKI is estimated to affect 13-18% of people admitted to hospital. It can affect both adults and children.
-# [source: https://www.nhs.uk/conditions/acute-kidney-injury/]
-# Setting percentage_of_patients to 0.714 for each AKI scenario below, which for 21 scenarios sums up to 14.9%.
-
-# Note: if more AKI scenarios are added, this percentage needs to be calibrated accordingly to still reflect
-# ~15% of patents affected by AKI.
-# Note: some AKI scenarios below may be more likely than others, but this is currently not reflected in the
-# percentage distribution.
-
-# Scenarios 1 to 21 implement KDIGO Guidelines.
-
-# AKI scenario 1: High creatinine with no previous samples in last 364 days
-# Expected Output: Creatinine High ?AKI ?CKD
-aki_scenario_1:
-  percentage_of_patients: 0.714
+scenario_a01_001:
+  percentage_of_patients: 0.25
   persons:
     main_patient:
       age:
         from: 20
-        to: 20
+        to: 60
       gender: M
-      first_name: "AKI Scenario 1"
+      first_name: "scenario_a01_001"
   pathway:
     - admission:
-        loc: Renal
+        loc: WardA01
     - delay:
         from: 30m
         to: 60m
     - discharge: {}
 
-# AKI scenario 2: Change of >26 in <48hrs
-# Expected Output: AKI Warning Stage 1
-aki_scenario_2:
-  percentage_of_patients: 0.714
+scenario_b01_001:
+  percentage_of_patients: 0.25
   persons:
     main_patient:
       age:
-        from: 35
-        to: 35
-      gender: F
-      first_name: "AKI Scenario 2"
-  pathway:
-    - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 3: Change of >26 in >48hrs with less than 50% increment
-# Expected Output: no comment appended
-aki_scenario_3:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 54
-        to: 54
+        from: 20
+        to: 60
       gender: M
-      first_name: "AKI Scenario 3"
+      first_name: "scenario_b01_001"
   pathway:
     - admission:
-        loc: Renal
+        loc: WardB01
     - delay:
         from: 30m
         to: 60m
     - discharge: {}
 
-# AKI scenario 4: 50-100% increase within 7 days
-# Expected Output: AKI Warning Stage 1
-aki_scenario_4:
-  percentage_of_patients: 0.714
+scenario_c01_001:
+  percentage_of_patients: 0.25
   persons:
     main_patient:
       age:
-        from: 43
-        to: 43
-      gender: F
-      first_name: "AKI Scenario 4"
-  pathway:
-    - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 5: 50-100% increase using lowest value from several in last 7
-# days
-# Expected Output: AKI Warning Stage 1
-aki_scenario_5:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 23
-        to: 23
+        from: 20
+        to: 60
       gender: M
-      first_name: "AKI Scenario 5"
+      first_name: "scenario_c01_001"
   pathway:
     - admission:
-        loc: Renal
+        loc: WardC01
     - delay:
         from: 30m
         to: 60m
     - discharge: {}
 
-# AKI scenario 6: 100-200% increase using lowest value from several in last
-# 7 days
-# Expected Output: AKI Warning Stage 2
-aki_scenario_6:
-  percentage_of_patients: 0.714
+scenario_d01_001:
+  percentage_of_patients: 0.25
   persons:
     main_patient:
       age:
-        from: 31
-        to: 31
-      gender: F
-      first_name: "AKI Scenario 6"
-  pathway:
-    - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 7: >200% increase using lowest value from several in last
-# 7 days
-# Expected Output: AKI Warning Stage 3
-aki_scenario_7:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 37
-        to: 37
+        from: 20
+        to: 60
       gender: M
-      first_name: "AKI Scenario 7"
+      first_name: "scenario_d01_001"
   pathway:
     - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 8: >50% increase AND value >354, using lowest value from
-# several in last 7 days
-# Expected Output: AKI Warning Stage 3
-aki_scenario_8:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 49
-        to: 49
-      gender: F
-      first_name: "AKI Scenario 8"
-  pathway:
-    - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 9: <50% increase using median from days 8-364
-# Expected Output: no comment appended
-aki_scenario_9:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 54
-        to: 54
-      gender: M
-      first_name: "AKI Scenario 9"
-  pathway:
-    - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 10: 50-100% increase using median from days 8-364
-# Expected Output: AKI Warning Stage 1
-aki_scenario_10:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 65
-        to: 65
-      gender: F
-      first_name: "AKI Scenario 10"
-  pathway:
-    - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 11: 50-100% increase using median from days 8-364
-# Additional blood tests >364 days present - if these are incorrectly
-# included to calculate baseline then stage 2 will be reported
-#
-# Additional blood tests >364 days present - if these are incorrectly
-# included to calculate baseline then stage 2 will be reported
-#
-# Expected Output: AKI Warning Stage 1
-aki_scenario_11:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 45
-        to: 45
-      gender: M
-      first_name: "AKI Scenario 11"
-  pathway:
-    - admission:
-        loc: Renal
-    - delay:
-        from: 30m
-        to: 60m
-    - discharge: {}
-
-# AKI scenario 12: 100-200% increase using median from days 8-364
-# Expected Output: AKI Warning Stage 2
-aki_scenario_12:
-  percentage_of_patients: 0.714
-  persons:
-    main_patient:
-      age:
-        from: 70
-        to: 70
-      gender: M
-      first_name: "AKI Scenario 12"
-  pathway:
-    - admission:
-        loc: Renal
+        loc: WardD01
     - delay:
         from: 30m
         to: 60m

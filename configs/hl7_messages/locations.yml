@@ -14,29 +14,113 @@
 
 ED:
   poc: ED
-  facility: Simulated Hospital
+  facility: SimHos
   building:
   floor: 1
   room: ED
   type: ED
 
-Renal:
-  poc: RenalWard
-  facility: Simulated Hospital
-  building: Main Building
-  floor: 5
-  room: MainRoom
+WardA01:
+  poc: WardA01
+  facility: SimHosp
+  building: Main
+  floor: 1
+  room: Room
 
-Renalx:
-  poc: RenalWard
-  facility: Simulated Hospital
-  building: Main Building
-  floor: 5
-  room: OtherRoom
+WardA02:
+  poc: WardA02
+  facility: SimHosp
+  building: Main
+  floor: 1
+  room: Room
 
-Non-renal:
-  poc: OtherWard
-  facility: Simulated Hospital
+WardA03:
+  poc: WardA03
+  facility: SimHosp
+  building: Main Building
+  floor: 1
+  room: Room
+
+WardB01:
+  poc: WardA01
+  facility: SimHosp
+  building: Main
+  floor: 1
+  room: Room
+
+WardB02:
+  poc: WardB02
+  facility: SimHosp
+  building: Main
+  floor: 2
+  room: Room
+
+WardB03:
+  poc: WardB03
+  facility: SimHosp
+  building: Main Building
+  floor: 3
+  room: Room
+
+WardC01:
+  poc: WardC01
+  facility: SimHosp
+  building: Main
+  floor: 3
+  room: Room
+
+WardC02:
+  poc: WardC02
+  facility: SimHosp
+  building: Main
+  floor: 3
+  room: Room
+
+WardC03:
+  poc: WardC03
+  facility: SimHosp
+  building: Main Building
+  floor: 3
+  room: Room
+
+WardD01:
+  poc: WardD01
+  facility: SimHosp
+  building: Main
+  floor: 4
+  room: Room
+
+WardD02:
+  poc: WardD02
+  facility: SimHosp
+  building: Main
+  floor: 4
+  room: Room
+
+WardDE03:
+  poc: WardD03
+  facility: SimHosp
   building: Main Building
   floor: 4
-  room: MainRoom
+  room: Room
+
+WardE01:
+  poc: WardE01
+  facility: SimHosp
+  building: Main
+  floor: 5
+  room: Room
+
+WardE02:
+  poc: WardE02
+  facility: SimHosp
+  building: Main
+  floor: 5
+  room: Room
+
+WardE03:
+  poc: WardE03
+  facility: SimHosp
+  building: Main Building
+  floor: 5
+  room: Room
